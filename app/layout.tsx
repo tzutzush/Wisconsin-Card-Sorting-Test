@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
-import { AppSidebar } from "@/components/ui/app-sidebar";
+import MainSidebar from "@/components/ui/app-sidebar";
 
 export const metadata: Metadata = {
   title: "Wisconsin Card Sorting Test",
@@ -16,13 +15,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <SidebarProvider>
-          <AppSidebar />
-          <main>
-            <SidebarTrigger />
-            {children}
-          </main>
-        </SidebarProvider>
+        <div className="flex h-screen">
+          <MainSidebar />
+          <main className="flex-1 overflow-auto p-4">{children}</main>
+        </div>
       </body>
     </html>
   );

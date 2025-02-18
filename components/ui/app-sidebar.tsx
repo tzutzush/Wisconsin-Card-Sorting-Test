@@ -1,56 +1,40 @@
-import { Home, FlaskConical, Info } from "lucide-react";
+"use client";
 
+import React from "react";
 import {
   Sidebar,
   SidebarContent,
-  SidebarGroup,
-  SidebarGroupContent,
-  SidebarGroupLabel,
+  SidebarHeader,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
+import { Home, Mail, Settings } from "lucide-react";
+import Link from "next/link";
 
-// Menu items.
-const items = [
-  {
-    title: "Home",
-    url: "/home",
-    icon: Home,
-  },
-  {
-    title: "Demo",
-    url: "/demo",
-    icon: Info,
-  },
-  {
-    title: "Actual test",
-    url: "/actual-test",
-    icon: FlaskConical,
-  },
+const navigationItems = [
+  { icon: Home, label: "Home", href: "/home" },
+  { icon: Mail, label: "Demo", href: "/demo" },
+  { icon: Settings, label: "Game", href: "/game" },
 ];
 
-export function AppSidebar() {
+export default function MainSidebar() {
   return (
     <Sidebar>
+      <SidebarHeader>Wisconsin Card Sorting Game</SidebarHeader>
       <SidebarContent>
-        <SidebarGroup>
-          <SidebarGroupLabel>Application</SidebarGroupLabel>
-          <SidebarGroupContent>
-            <SidebarMenu>
-              {items.map((item) => (
-                <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton asChild>
-                    <a href={item.url}>
-                      <item.icon />
-                      <span>{item.title}</span>
-                    </a>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              ))}
-            </SidebarMenu>
-          </SidebarGroupContent>
-        </SidebarGroup>
+        <SidebarMenu>
+          {navigationItems.map((item) => (
+            <SidebarMenuItem key={item.href}>
+              <SidebarMenuButton asChild>
+                <Link href={item.href}>
+                  <item.icon className="mr-2 h-4 w-4" />
+                  <span>{item.label}</span>
+                </Link>
+              </SidebarMenuButton>
+            </SidebarMenuItem>
+          ))}
+        </SidebarMenu>
       </SidebarContent>
     </Sidebar>
   );
