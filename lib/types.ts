@@ -7,3 +7,5 @@ export type CardShape = {
   color: Color;
   quantity: number;
 };
+
+export type GameRule = "shape" | "color" | "quantity";

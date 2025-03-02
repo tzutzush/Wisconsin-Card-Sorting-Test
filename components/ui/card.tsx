@@ -3,9 +3,19 @@ import React from "react";
 import Image from "next/image";
 import { CardShape } from "@/lib/types";
 
-export default function Card(card: CardShape) {
+type CardProps = {
+  card: CardShape;
+  onClick?: () => void;
+};
+
+export default function Card({ card, onClick }: CardProps) {
   return (
-    <div className="shadow-lg rounded-lg overflow-hidden">
+    <div
+      onClick={onClick}
+      className={`shadow-lg rounded-lg overflow-hidden ${
+        onClick ? "cursor-pointer" : ""
+      }`}
+    >
       <Image
         src={card.src}
         data-shape={card.shape}
