@@ -20,7 +20,7 @@ const navigationItems = [
 
 export default function MainSidebar() {
   return (
-    <Sidebar>
+    <Sidebar className="z-50">
       <SidebarHeader>Wisconsin Card Sorting Game</SidebarHeader>
       <SidebarContent>
         <SidebarMenu>
